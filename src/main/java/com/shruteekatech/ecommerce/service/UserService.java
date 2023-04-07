@@ -3,6 +3,7 @@ package com.shruteekatech.ecommerce.service;
 
 import com.shruteekatech.ecommerce.dtos.PagableResponse;
 import com.shruteekatech.ecommerce.dtos.UserDto;
+import net.sf.jasperreports.engine.JRException;
 
 
 import java.io.FileNotFoundException;
@@ -33,5 +34,5 @@ public interface UserService {
 
     List<UserDto> searchUsers(String keyword);
 //    other specific user
-  //String exportrept(String reportformat) throws FileNotFoundException, JRException;
+  String exportrept(String reportformat) throws FileNotFoundException, JRException;
 }
