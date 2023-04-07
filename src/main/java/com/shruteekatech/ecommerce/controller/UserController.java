@@ -13,15 +13,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -179,7 +183,7 @@ public class UserController {
        log.info("Completed the upload image process",userid);
         return new ResponseEntity<>(imageResponse,HttpStatus.CREATED);
     }
-/*//    To serve the user image
+//    To serve the user image
     @GetMapping("/image/{userId}")
     public void  serveUserimage(@PathVariable Long userId, HttpServletResponse response) throws IOException {
         log.info("initiated request to serve image with userid:{}",userId);
@@ -189,7 +193,7 @@ public class UserController {
         StreamUtils.copy(resource,response.getOutputStream());
         log.info("Completed request to serve image with userid:{}",userId);
     }
-
+/*
     @GetMapping("/report/{format}")
     public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException, JRException, FileNotFoundException {
         log.info("initiated request to genrate the reports  with Format:{}",format);
