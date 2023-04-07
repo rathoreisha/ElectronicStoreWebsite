@@ -12,6 +12,8 @@ import com.shruteekatech.ecommerce.repository.UserRepository;
 import com.shruteekatech.ecommerce.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -211,7 +213,7 @@ public class UserServiceimpl implements UserService {
                 .password(userDto.getPassword()).build();
     }
 
-   /* @Override
+    @Override
     public String exportrept(String reportFormat) throws FileNotFoundException, JRException {
         log.info("Initiating dao call to Genrate the users report with reportformat:{}", reportFormat);
 
@@ -238,5 +240,5 @@ public class UserServiceimpl implements UserService {
         return "report generated in path : " + path;
 
     }
-*/
+
 }
