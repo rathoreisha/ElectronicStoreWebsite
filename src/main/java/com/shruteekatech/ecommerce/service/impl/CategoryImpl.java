@@ -11,6 +11,8 @@ import com.shruteekatech.ecommerce.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 //import net.sf.jasperreports.engine.*;
 //import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -126,7 +128,7 @@ public class CategoryImpl implements CategoryService {
 
     }
 
-  /*  @Override
+   @Override
     public String exportrept(String reportFormat) throws FileNotFoundException, JRException {
         log.info("Initiating dao call to Generate the Category report with report format:{}", reportFormat);
 
@@ -152,5 +154,5 @@ public class CategoryImpl implements CategoryService {
 
         return "report generated in path : " + path;
 
-    }*/
+    }
 }
