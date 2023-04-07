@@ -10,6 +10,7 @@ import com.shruteekatech.ecommerce.service.CategoryService;
 import com.shruteekatech.ecommerce.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -122,11 +123,11 @@ public class CategoryController {
         log.info("Completed the request to Serve the image with categoryid:{}",catid);
 
     }
-/*
+
     @GetMapping("/report/{format}")
     public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException, JRException, FileNotFoundException {
         log.info("initiated request to genrate the reports  with Format:{}",format);
         log.info("completed request to genrate the reports  with Format:{}",format);
         return this.categoryService.exportrept(format);
-    }*/
+    }
 }
