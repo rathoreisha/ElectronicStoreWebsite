@@ -9,6 +9,7 @@ import com.shruteekatech.ecommerce.service.FileService;
 import com.shruteekatech.ecommerce.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -193,11 +195,11 @@ public class UserController {
         StreamUtils.copy(resource,response.getOutputStream());
         log.info("Completed request to serve image with userid:{}",userId);
     }
-/*
+
     @GetMapping("/report/{format}")
     public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException, JRException, FileNotFoundException {
         log.info("initiated request to genrate the reports  with Format:{}",format);
         log.info("completed request to genrate the reports  with Format:{}",format);
         return this.userService.exportrept(format);
-    }*/
+    }
 }
