@@ -4,6 +4,7 @@ package com.shruteekatech.ecommerce.service;
 
 import com.shruteekatech.ecommerce.dtos.CategoryDto;
 import com.shruteekatech.ecommerce.dtos.PagableResponse;
+import net.sf.jasperreports.engine.JRException;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -28,5 +29,5 @@ public interface CategoryService {
 //    Delete Category
     void deleteCategory(Long catid);
 
-   // String exportrept(String reportformat) throws FileNotFoundException, JRException;
+    String exportrept(String reportformat) throws FileNotFoundException, JRException;
 }
