@@ -97,7 +97,7 @@ public class CategoryController {
         return new ResponseEntity<>(searchCategory,HttpStatus.OK);
     }
 
-  /*  @PostMapping("/image/{categoryid}/")
+    @PostMapping("/image/{categoryid}/")
     public ResponseEntity<ImageResponse> uploadImage(@PathVariable Long categoryid, @RequestParam("userimage") MultipartFile file) throws IOException {
         log.info("Initiating the request to Upload the image with categoryid:{}",categoryid);
         CategoryDto category = this.categoryService.getSingleCategory(categoryid);
@@ -110,9 +110,9 @@ public class CategoryController {
         ImageResponse imageResponse=ImageResponse.builder().imagename(uploadImage).message("Image Uploaded").status(true).build();
         log.info(" Completed the request to upload image process",categoryid);
         return new ResponseEntity<>(imageResponse,HttpStatus.CREATED);
-    }*/
+    }
     //    To serve the user image
-   /* @GetMapping("/image/{catid}")
+    @GetMapping("/image/{catid}")
     public void  serveUserimage(@PathVariable Long catid, HttpServletResponse response) throws IOException {
         log.info("Initiating the request to Serve the image with categoryid:{}",catid);
         CategoryDto category = this.categoryService.getSingleCategory(catid);
@@ -122,7 +122,7 @@ public class CategoryController {
         log.info("Completed the request to Serve the image with categoryid:{}",catid);
 
     }
-
+/*
     @GetMapping("/report/{format}")
     public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException, JRException, FileNotFoundException {
         log.info("initiated request to genrate the reports  with Format:{}",format);
