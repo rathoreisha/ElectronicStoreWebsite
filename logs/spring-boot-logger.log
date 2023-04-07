@@ -121,3 +121,349 @@ Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'ca
 2023-04-07 17:13:38,562 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9696"]
 2023-04-07 17:13:38,616 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9696 (http) with context path ''
 2023-04-07 17:13:38,643 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ElectronicStoredApplication in 15.786 seconds (JVM running for 17.713)
+2023-04-07 17:31:35,331 INFO org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-07 17:31:35,333 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9696-exec-1] Initializing Servlet 'dispatcherServlet'
+2023-04-07 17:31:35,340 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9696-exec-1] Completed initialization in 6 ms
+2023-04-07 17:31:35,894 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-1] Message from isValid : abc.png 
+2023-04-07 17:31:36,049 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-9696-exec-1] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.shruteekatech.ecommerce.dtos.UserDto> com.shruteekatech.ecommerce.controller.UserController.createUser(com.shruteekatech.ecommerce.dtos.UserDto) with 2 errors: [Field error in object 'userDto' on field 'name': rejected value []; codes [NotEmpty.userDto.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.name,name]; arguments []; default message [name]]; default message [must not be empty]] [Field error in object 'userDto' on field 'name': rejected value []; codes [Size.userDto.name,Size.name,Size.java.lang.String,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [userDto.name,name]; arguments []; default message [name],15,3]; default message [Username must be in 4 characters !!]] ]
+2023-04-07 17:31:49,834 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-4] Message from isValid : abc.png 
+2023-04-07 17:31:49,835 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-4] Initiated request to save the user details 
+2023-04-07 17:31:49,836 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-4] Initiating dao call to Save the user data
+2023-04-07 17:31:49,963 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-4] Completed dao call to Save the user data
+2023-04-07 17:31:49,964 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-4] Completed request to save the user details
+2023-04-07 17:32:48,642 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-5] Message from isValid : abc.png 
+2023-04-07 17:32:48,643 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-5] Initiated request to save the user details 
+2023-04-07 17:32:48,644 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-5] Initiating dao call to Save the user data
+2023-04-07 17:32:48,671 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-5] Completed dao call to Save the user data
+2023-04-07 17:32:48,671 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-5] Completed request to save the user details
+2023-04-07 17:33:28,910 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-6] Message from isValid : abc.png 
+2023-04-07 17:33:28,911 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-6] Initiated request to save the user details 
+2023-04-07 17:33:28,912 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-6] Initiating dao call to Save the user data
+2023-04-07 17:33:28,931 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-6] Completed dao call to Save the user data
+2023-04-07 17:33:28,932 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-6] Completed request to save the user details
+2023-04-07 17:33:53,414 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-7] Message from isValid : abc.png 
+2023-04-07 17:33:53,415 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-7] Initiated request to save the user details 
+2023-04-07 17:33:53,416 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-7] Initiating dao call to Save the user data
+2023-04-07 17:33:53,425 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-7] Completed dao call to Save the user data
+2023-04-07 17:33:53,425 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-7] Completed request to save the user details
+2023-04-07 17:34:28,230 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-8] Message from isValid : abc.png 
+2023-04-07 17:34:28,231 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-8] Initiated request to save the user details 
+2023-04-07 17:34:28,231 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-8] Initiating dao call to Save the user data
+2023-04-07 17:34:28,244 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-8] Completed dao call to Save the user data
+2023-04-07 17:34:28,244 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-8] Completed request to save the user details
+2023-04-07 17:35:17,595 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-9] Message from isValid : abc.png 
+2023-04-07 17:35:17,595 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-9] Initiated request to save the user details 
+2023-04-07 17:35:17,596 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-9] Initiating dao call to Save the user data
+2023-04-07 17:35:17,604 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-9] Completed dao call to Save the user data
+2023-04-07 17:35:17,605 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-9] Completed request to save the user details
+2023-04-07 17:45:26,294 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-04-07 17:45:26,300 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-04-07 17:45:26,319 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2023-04-07 17:48:41,231 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.5.Final
+2023-04-07 17:48:41,260 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ElectronicStoredApplication using Java 17.0.4 on DESKTOP-HE75IJA with PID 12940 (F:\Bikkadit\MajorProject\ElectronicStored\target\classes started by Genius Computer in F:\Bikkadit\MajorProject\ElectronicStored)
+2023-04-07 17:48:41,263 INFO org.springframework.boot.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2023-04-07 17:48:41,450 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-07 17:48:41,451 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-07 17:48:44,181 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-04-07 17:48:44,412 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 206 ms. Found 3 JPA repository interfaces.
+2023-04-07 17:48:47,144 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9696 (http)
+2023-04-07 17:48:47,195 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9696"]
+2023-04-07 17:48:47,196 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2023-04-07 17:48:47,197 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-04-07 17:48:47,541 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2023-04-07 17:48:47,542 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 6090 ms
+2023-04-07 17:48:48,044 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-04-07 17:48:48,210 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-04-07 17:48:48,829 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-04-07 17:48:49,108 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2023-04-07 17:48:49,964 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2023-04-07 17:48:50,016 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-04-07 17:48:52,298 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-04-07 17:48:52,315 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-04-07 17:48:53,985 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-04-07 17:48:55,082 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2023-04-07 17:48:55,135 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9696"]
+2023-04-07 17:48:55,215 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9696 (http) with context path ''
+2023-04-07 17:48:55,258 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ElectronicStoredApplication in 15.087 seconds (JVM running for 17.293)
+2023-04-07 17:50:31,601 INFO org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-07 17:50:31,604 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9696-exec-2] Initializing Servlet 'dispatcherServlet'
+2023-04-07 17:50:31,608 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-9696-exec-2] Completed initialization in 3 ms
+2023-04-07 17:50:31,716 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-2] Initiated request to get all the user details
+2023-04-07 17:50:31,717 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-2] Initiating dao call to get the All users data 
+2023-04-07 17:50:32,165 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-2] Completed dao call to get the All users data 
+2023-04-07 17:50:32,166 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-2] Completed request to get all the user details
+2023-04-07 17:50:45,034 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-3] Initiated request to get the single user with UserId :2 
+2023-04-07 17:50:45,036 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-3] Initiating dao call to get the single user data with userId:2
+2023-04-07 17:50:45,083 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-3] Completed dao call to get the single user data with userId:2
+2023-04-07 17:50:45,084 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-3] Completed request to get the single user with UserId:2
+2023-04-07 17:51:10,139 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-4] Upload the image with userid:1
+2023-04-07 17:51:10,140 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-4] Initiating dao call to get the single user data with userId:1
+2023-04-07 17:51:10,150 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-4] Completed dao call to get the single user data with userId:1
+2023-04-07 17:51:10,151 INFO com.shruteekatech.ecommerce.service.impl.FileServiceImpl [http-nio-9696-exec-4] Filename :47646.jpg
+2023-04-07 17:51:10,160 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-4] Initiating dao call to update the user data with userId:1
+2023-04-07 17:51:10,166 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-4] Completed dao call to update the user data with userId:1
+2023-04-07 17:51:10,252 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-4] Completed the upload image process
+2023-04-07 17:51:10,267 WARN org.springframework.web.multipart.support.StandardServletMultipartResolver [http-nio-9696-exec-4] Failed to perform cleanup of multipart items
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.springframework.web.multipart.support.StandardServletMultipartResolver.cleanupMultipart(StandardServletMultipartResolver.java:134)
+	at org.springframework.web.servlet.DispatcherServlet.cleanupMultipart(DispatcherServlet.java:1251)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1108)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:528)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:596)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	... 44 common frames omitted
+2023-04-07 17:51:10,269 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-4] Error processing request
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.apache.catalina.connector.Request.recycle(Request.java:474)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:421)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	... 13 common frames omitted
+2023-04-07 17:51:10,274 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-4] Error reading request, ignored
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.apache.catalina.connector.Request.recycle(Request.java:474)
+	at org.apache.catalina.connector.CoyoteAdapter.log(CoyoteAdapter.java:494)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:419)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	... 13 common frames omitted
+2023-04-07 17:51:10,276 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-4] Error running socket processor
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.apache.catalina.connector.Request.recycle(Request.java:474)
+	at org.apache.catalina.connector.CoyoteAdapter.log(CoyoteAdapter.java:494)
+	at org.apache.catalina.connector.CoyoteAdapter.checkRecycled(CoyoteAdapter.java:517)
+	at org.apache.coyote.http11.Http11Processor.recycle(Http11Processor.java:1415)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.release(AbstractProtocol.java:1129)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1090)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000000.tmp
+	... 14 common frames omitted
+2023-04-07 17:51:44,644 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-5] initiated request to serve image with userid:1
+2023-04-07 17:51:44,645 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-5] Initiating dao call to get the single user data with userId:1
+2023-04-07 17:51:44,656 INFO com.shruteekatech.ecommerce.service.impl.UserServiceimpl [http-nio-9696-exec-5] Completed dao call to get the single user data with userId:1
+2023-04-07 17:51:44,659 INFO com.shruteekatech.ecommerce.controller.UserController [http-nio-9696-exec-5] Completed request to serve image with userid:1
+2023-04-07 17:52:03,602 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-7] Message from isValid : xyz.png 
+2023-04-07 17:52:03,615 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-7] Initiating request to Create Category
+2023-04-07 17:52:03,618 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-7] Initiated Dao Call to save the Category
+2023-04-07 17:52:03,735 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-7] Completed Dao call to save the Category
+2023-04-07 17:52:03,736 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-7] Completed request to Create Category
+2023-04-07 17:52:35,452 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-8] Message from isValid : xyz.png 
+2023-04-07 17:52:35,454 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-8] Initiating request to Create Category
+2023-04-07 17:52:35,455 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-8] Initiated Dao Call to save the Category
+2023-04-07 17:52:35,466 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-8] Completed Dao call to save the Category
+2023-04-07 17:52:35,467 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-8] Completed request to Create Category
+2023-04-07 17:53:53,218 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-1] Message from isValid : xyz.png 
+2023-04-07 17:53:53,219 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-1] Initiating request to Create Category
+2023-04-07 17:53:53,220 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-1] Initiated Dao Call to save the Category
+2023-04-07 17:53:53,235 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-1] Completed Dao call to save the Category
+2023-04-07 17:53:53,237 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-1] Completed request to Create Category
+2023-04-07 17:54:16,039 INFO com.shruteekatech.ecommerce.validation.ImageNameValidator [http-nio-9696-exec-2] Message from isValid : xyz.png 
+2023-04-07 17:54:16,040 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-2] Initiating request to Create Category
+2023-04-07 17:54:16,040 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-2] Initiated Dao Call to save the Category
+2023-04-07 17:54:16,053 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-2] Completed Dao call to save the Category
+2023-04-07 17:54:16,053 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-2] Completed request to Create Category
+2023-04-07 17:54:29,540 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-3] Initiated request to get all the Category details
+2023-04-07 17:54:29,541 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-3] Initiating dao call to get the All Category data 
+2023-04-07 17:54:29,563 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-3] Completed dao call to get the All Categories data 
+2023-04-07 17:54:29,563 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-3] Completed request to get all the Category details
+2023-04-07 17:54:36,245 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-4] Initiating the request to Get the Category :1
+2023-04-07 17:54:36,245 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-4] Initiated Dao Call to Get the Category with :1
+2023-04-07 17:54:36,254 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-4] Completed Dao Call to Get the Category with :1
+2023-04-07 17:54:36,254 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-4] Completed the request to Get the Category :1
+2023-04-07 17:54:43,802 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-6] initiated request to genrate the reports  with Format:pdf
+2023-04-07 17:54:43,803 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-6] completed request to genrate the reports  with Format:pdf
+2023-04-07 17:54:43,804 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-6] Initiating dao call to Generate the Category report with report format:pdf
+2023-04-07 17:54:50,156 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-6] Completed dao call to Generate the users report with report format:pdf
+2023-04-07 17:55:44,454 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-5] Initiating the request to Upload the image with categoryid:3
+2023-04-07 17:55:44,454 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-5] Initiated Dao Call to Get the Category with :3
+2023-04-07 17:55:44,463 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-5] Completed Dao Call to Get the Category with :3
+2023-04-07 17:55:44,463 INFO com.shruteekatech.ecommerce.service.impl.FileServiceImpl [http-nio-9696-exec-5] Filename :laptop.jpg
+2023-04-07 17:55:44,465 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-5] Initiated Dao Call to Update the Category with :3
+2023-04-07 17:55:44,483 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-5] Completed Dao Call to Update the Category with :3
+2023-04-07 17:55:44,485 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-5]  Completed the request to upload image process
+2023-04-07 17:55:44,490 WARN org.springframework.web.multipart.support.StandardServletMultipartResolver [http-nio-9696-exec-5] Failed to perform cleanup of multipart items
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.springframework.web.multipart.support.StandardServletMultipartResolver.cleanupMultipart(StandardServletMultipartResolver.java:134)
+	at org.springframework.web.servlet.DispatcherServlet.cleanupMultipart(DispatcherServlet.java:1251)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1108)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:528)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:596)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	... 44 common frames omitted
+2023-04-07 17:55:44,492 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-5] Error processing request
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.apache.catalina.connector.Request.recycle(Request.java:474)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:421)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	... 13 common frames omitted
+2023-04-07 17:55:44,493 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-5] Error reading request, ignored
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.apache.catalina.connector.Request.recycle(Request.java:474)
+	at org.apache.catalina.connector.CoyoteAdapter.log(CoyoteAdapter.java:494)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:419)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	... 13 common frames omitted
+2023-04-07 17:55:44,497 ERROR org.apache.juli.logging.DirectJDKLog [http-nio-9696-exec-5] Error running socket processor
+java.io.UncheckedIOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	at org.apache.tomcat.util.http.fileupload.disk.DiskFileItem.delete(DiskFileItem.java:431)
+	at org.apache.catalina.core.ApplicationPart.delete(ApplicationPart.java:53)
+	at org.apache.catalina.connector.Request.recycle(Request.java:474)
+	at org.apache.catalina.connector.CoyoteAdapter.log(CoyoteAdapter.java:494)
+	at org.apache.catalina.connector.CoyoteAdapter.checkRecycled(CoyoteAdapter.java:517)
+	at org.apache.coyote.http11.Http11Processor.recycle(Http11Processor.java:1415)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.release(AbstractProtocol.java:1129)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1090)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.io.IOException: Cannot delete C:\Users\Genius Computer\AppData\Local\Temp\tomcat.9696.10218696177322474266\work\Tomcat\localhost\ROOT\upload_dc7c1e00_5a37_4d66_b8c1_115c08a3f299_00000001.tmp
+	... 14 common frames omitted
+2023-04-07 17:55:59,220 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-8] Initiating the request to Serve the image with categoryid:3
+2023-04-07 17:55:59,221 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-8] Initiated Dao Call to Get the Category with :3
+2023-04-07 17:55:59,231 INFO com.shruteekatech.ecommerce.service.impl.CategoryImpl [http-nio-9696-exec-8] Completed Dao Call to Get the Category with :3
+2023-04-07 17:55:59,241 INFO com.shruteekatech.ecommerce.controller.CategoryController [http-nio-9696-exec-8] Completed the request to Serve the image with categoryid:3
+2023-04-07 17:56:37,275 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-9696-exec-9] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.shruteekatech.ecommerce.dtos.ProductDto> com.shruteekatech.ecommerce.controller.ProductController.createProduct(com.shruteekatech.ecommerce.dtos.ProductDto) with 2 errors: [Field error in object 'productDto' on field 'discount': rejected value [null]; codes [NotEmpty.productDto.discount,NotEmpty.discount,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [productDto.discount,discount]; arguments []; default message [discount]]; default message [must not be empty]] [Field error in object 'productDto' on field 'brand': rejected value [null]; codes [NotEmpty.productDto.brand,NotEmpty.brand,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [productDto.brand,brand]; arguments []; default message [brand]]; default message [must not be empty]] ]
+2023-04-07 17:57:20,224 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-1] Intiating request to Create Product
+2023-04-07 17:57:20,225 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-1] Intiating dao call to save the Product
+2023-04-07 17:57:20,281 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-1] Completed dao call to save the Product
+2023-04-07 17:57:20,286 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-1] Completed request to create the Product
+2023-04-07 17:57:35,084 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-2] Intiating request to GetAll Products
+2023-04-07 17:57:35,085 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-2] Intiating dao call to GetAllproducts 
+2023-04-07 17:57:35,103 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-2] Completed dao call to GetAllproducts 
+2023-04-07 17:57:35,104 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-2] Completed request to GetAll Products
+2023-04-07 17:57:52,716 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-3] Intiating request to Get Product with productid:1
+2023-04-07 17:57:52,717 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-3] Intiating Dao call to Get the Product With productid :1
+2023-04-07 17:57:52,728 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-3] Completed Dao call to Get the Product With productid :1
+2023-04-07 17:57:52,731 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-3] Completed request to Delete Product with productid:1
+2023-04-07 17:58:05,608 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-4] Intiating request to GetAll Products by searching title:mobiles
+2023-04-07 17:58:05,610 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-4] Intiating dao call to GetAllproducts through search by title:mobiles 
+2023-04-07 17:58:05,665 INFO com.shruteekatech.ecommerce.service.impl.ProductImpl [http-nio-9696-exec-4] completed dao call to GetAllproducts through search by title:mobiles 
+2023-04-07 17:58:05,667 INFO com.shruteekatech.ecommerce.controller.ProductController [http-nio-9696-exec-4] Completed request to GetAll Products by searching title:mobiles
