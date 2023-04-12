@@ -64,12 +64,13 @@ public class UserServiceimpl implements UserService {
     @Override
     public UserDto createUser(UserDto userdto) {
         log.info("Initiating dao call to Save the user data");
-        User user = this.dtotoentity(userdto);
-
+       // User user = this.dtotoentity(userdto);
+        User user = this.modelMapper.map(userdto, User.class);
         User saveuser = this.userRepo.save(user);
-        UserDto entitytouser1 = this.entitytouser(saveuser);
+       // UserDto entitytouser1 = this.entitytouser(saveuser);
         log.info("Completed dao call to Save the user data");
-        return entitytouser1;
+        UserDto userDto = this.modelMapper.map(saveuser, UserDto.class);
+        return userDto;
     }
 
 
@@ -190,7 +191,7 @@ public class UserServiceimpl implements UserService {
         return userDtos;
     }
 
-    private UserDto entitytouser(User user) {
+   /* private UserDto entitytouser(User user) {
 
         return UserDto.builder()
                 .id(user.getId())
@@ -200,8 +201,9 @@ public class UserServiceimpl implements UserService {
                 .name(user.getName())
                 .imageName(user.getImageName())
                 .gender(user.getGender()).build();
-    }
+    }*/
 
+/*
     private User dtotoentity(UserDto userDto) {
 
         return User.builder().id(userDto.getId())
@@ -212,6 +214,7 @@ public class UserServiceimpl implements UserService {
                 .imageName(userDto.getImageName())
                 .password(userDto.getPassword()).build();
     }
+*/
 
     @Override
     public String exportrept(String reportFormat) throws FileNotFoundException, JRException {
