@@ -3,6 +3,8 @@ package com.shruteekatech.ecommerce.servicetest;
 import com.shruteekatech.ecommerce.BaseTest;
 import com.shruteekatech.ecommerce.dtos.PagableResponse;
 import com.shruteekatech.ecommerce.dtos.UserDto;
+import com.shruteekatech.ecommerce.exception.EmailNotFoundException;
+import com.shruteekatech.ecommerce.exception.ResourcenotFoundException;
 import com.shruteekatech.ecommerce.model.User;
 import com.shruteekatech.ecommerce.repository.UserRepository;
 import com.shruteekatech.ecommerce.service.UserService;
@@ -19,6 +21,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +42,7 @@ public class UserServiceImplTest extends BaseTest {
 
 
     User user,user1,user2;
+    List<User> users;
     UserDto userDto;
 
     @BeforeEach
@@ -59,10 +63,15 @@ public class UserServiceImplTest extends BaseTest {
                 .about("Software Enginner")
                 .email("Amruta@gmil.com").gender("Female")
                 .imageName("abc.png").password("1234@12").build();
-        userDto = UserDto.builder().about("My name").name("Sehma")
+        userDto = UserDto.builder().about("My name").name("Isha Rathore")
                 .imageName("xyz.png")
                 .email("abc@gmail.com")
                 .password("123@3isa").build();
+
+        users=new ArrayList<>();
+        users.add(user);
+        users.add(user1);
+        users.add(user2);
 
 
     }
@@ -113,6 +122,46 @@ public class UserServiceImplTest extends BaseTest {
         PagableResponse allUsers = userService.getAllUsers(1, 5, "name", "asc");
         Assertions.assertEquals(3,allUsers.getContent().size());
 
+
+    }
+    @Test
+    public void getSingleUserTest()
+    {
+        Long id=1l;
+//        Arrange
+        Mockito.when(repository.findById(id)).thenReturn(Optional.of(user));
+//        Act
+        UserDto singleUser = userService.getSingleUser(id);
+
+//        Assert
+        Assertions.assertEquals(user.getName(),singleUser.getName());
+//       Negative scenerio
+        Assertions.assertThrows( ResourcenotFoundException.class,()-> userService.getSingleUser(2l));
+    }
+
+    @Test
+    public void getUserbyEmailTest()
+    {
+        String email="isha@gmail.com";
+//        Arrange
+        Mockito.when(repository.findByEmail(email)).thenReturn(Optional.of(user));
+//        Act
+        UserDto userbyEmail = userService.getUserbyEmail(email);
+
+//        Assert
+        Assertions.assertEquals(user.getEmail(),userbyEmail.getEmail());
+        Assertions.assertThrows(EmailNotFoundException.class,()->userService.getUserbyEmail("abc123@gmail.com"));
+
+    }
+
+    @Test
+    public void searchUsersTest()
+    {
+        String keyword="isha";
+        Mockito.when(repository.findByNameContaining(keyword)).thenReturn(users);
+
+        List<UserDto> userDtos = userService.searchUsers(keyword);
+        Assertions.assertEquals(3,userDtos.size(),"Size not matched !!");
 
     }
 
