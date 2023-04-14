@@ -2,10 +2,7 @@ package com.shruteekatech.ecommerce.dtos;
 
 import com.shruteekatech.ecommerce.constant.ValidationConstant;
 import com.shruteekatech.ecommerce.validation.ImageNameValid;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -14,6 +11,7 @@ import javax.validation.constraints.Size;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CategoryDto extends BaseEntityDto {
 
     private Long categoryId;

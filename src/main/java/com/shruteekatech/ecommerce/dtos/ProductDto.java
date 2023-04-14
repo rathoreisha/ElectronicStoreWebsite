@@ -11,6 +11,7 @@ import javax.validation.constraints.*;
 @ToString
 @Getter
 @Setter
+@Builder
 public class ProductDto extends BaseEntityDto {
 
     private Long pid;
