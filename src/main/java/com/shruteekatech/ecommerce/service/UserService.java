@@ -31,8 +31,7 @@ public interface UserService {
 //    get user by email
     UserDto getUserbyEmail(String email);
 //    search user
-
     List<UserDto> searchUsers(String keyword);
-//    other specific user
+//    Report generation code
   String exportrept(String reportformat) throws FileNotFoundException, JRException;
 }
