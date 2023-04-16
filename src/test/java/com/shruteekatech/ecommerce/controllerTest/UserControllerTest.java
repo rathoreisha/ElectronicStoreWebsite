@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 
@@ -47,8 +48,8 @@ public class UserControllerTest extends BaseTest {
         user= User.builder()
                 .name("Isha")
                 .about("Software Enginner")
-                .email("isha@gmil.com").gender("Female")
-                .imageName("abc.png").password("1234@12").build();
+                .email("isha@gmail.com").gender("Female")
+                .imageName("abc.png").password("Isha@12234").build();
         user1= User.builder()
                 .name("Ashu")
                 .about("Software Enginner")
@@ -83,13 +84,14 @@ public class UserControllerTest extends BaseTest {
         Mockito.when(userService.createUser(Mockito.any())).thenReturn(dto);
 //        Actual request for url
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/create")
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/Api/Users/create")
                 .contentType(MediaType.APPLICATION_JSON)
                         .content(converobjectTojsonString(user))
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name").exists());
+                .andExpect(jsonPath("$.email").exists());
+
 
     }
 
@@ -97,9 +99,10 @@ public class UserControllerTest extends BaseTest {
         try
         {
            return new ObjectMapper().writeValueAsString(user);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        } catch (RuntimeException | JsonProcessingException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
 }
