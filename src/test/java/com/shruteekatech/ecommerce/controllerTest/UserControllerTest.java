@@ -33,8 +33,6 @@ public class UserControllerTest extends BaseTest {
     private UserService userService;
 
     @Autowired
-    private UserController userController;
-    @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
