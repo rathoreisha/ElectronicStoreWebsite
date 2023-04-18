@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shruteekatech.ecommerce.BaseTest;
 import com.shruteekatech.ecommerce.controller.UserController;
+import com.shruteekatech.ecommerce.dtos.PagableResponse;
 import com.shruteekatech.ecommerce.dtos.UserDto;
 import com.shruteekatech.ecommerce.model.User;
 import com.shruteekatech.ecommerce.service.UserService;
@@ -20,10 +21,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @AutoConfigureMockMvc
 public class UserControllerTest extends BaseTest {
@@ -40,7 +42,11 @@ public class UserControllerTest extends BaseTest {
 
     User user,user1,user2;
 
-    UserDto userDto;
+    UserDto userDto,userDto1,userDto2;
+
+    List<UserDto> userDtos;
+
+
 
     @BeforeEach
     public void init()
@@ -62,13 +68,27 @@ public class UserControllerTest extends BaseTest {
                 .imageName("abc.png").password("1234@12").build();
         userDto = UserDto.builder().about("My name").name("Isha Rathore")
                 .imageName("xyz.png")
-                .email("abc@gmail.com")
-                .password("123@3isa").build();
+                .email("isha@gmail.com")
+                .password("123Isha@3isa").build();
+
+        userDto1 = UserDto.builder().about("My name").name("Isha Rathore")
+                .imageName("xyz.png")
+                .email("Abc@gmail.com")
+                .password("123Isha@3isa").build();
+        userDto2 = UserDto.builder().about("My name").name("Isha Rathore")
+                .imageName("xyz.png")
+                .email("Abc@gmail.com")
+                .password("123Isha@3isa").build();
 
         /*users=new ArrayList<>();
         users.add(user);
         users.add(user1);
         users.add(user2);*/
+
+        userDtos=new ArrayList<>();
+        userDtos.add(userDto);
+        userDtos.add(userDto1);
+        userDtos.add(userDto2);
 
 
 
@@ -92,6 +112,68 @@ public class UserControllerTest extends BaseTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.email").exists());
 
+
+    }
+
+    @Test
+    public void updateUserTest() throws Exception {
+        UserDto dto = modelMapper.map(user, UserDto.class);
+        Long id=1l;
+        Mockito.when(userService.updateUser(Mockito.any(),Mockito.anyLong())).thenReturn(dto);
+        this.mockMvc.perform(MockMvcRequestBuilders.put("/Api/Users/"+id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(converobjectTojsonString(user)).
+                accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isCreated())
+                .andExpect(jsonPath("$.name").exists());
+    }
+
+    @Test
+    public void getAllUserTest() throws Exception {
+        PagableResponse<UserDto> pagableResponse=new PagableResponse<>();
+        pagableResponse.setContent(userDtos);
+        pagableResponse.setPageNumber(1);
+        pagableResponse.setPageSize(3);
+        pagableResponse.setTotalPages(2);
+
+        Mockito.when(userService.getAllUsers(Mockito.anyInt(),Mockito.anyInt(),Mockito.anyString(),Mockito.anyString())).thenReturn(pagableResponse);
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/Api/Users/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    public void getUserTest() throws Exception {
+        Long userid=2l;
+        Mockito.when(userService.getSingleUser(Mockito.anyLong())).thenReturn(userDto);
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/Api/Users/getbyid/"+userid)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
+
+    }
+    @Test
+    public void getUserbyemailTest() throws Exception {
+        String email="isha@gmail.com";
+        Mockito.when(userService.getUserbyEmail(Mockito.anyString())).thenReturn(userDto);
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/Api/Users/byemail/"+email)
+                .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andDo(print()).andExpect(status().isOk());
+
+
+    }
+    @Test
+    public void deleteUserTest() throws Exception {
+        doNothing().when(userService).deleteUser(Mockito.<Long>any());
+
+        this.mockMvc.perform(MockMvcRequestBuilders.delete("/Api/Users/delete/"+1l)
+                .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andDo(print()).andExpect(status().isOk());
+    }
+    @Test
+    public void searchuserTest() throws Exception {
+        Mockito.when(userService.searchUsers(Mockito.anyString())).thenReturn(userDtos);
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/Api/Users/search/"+"isha")
+                .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andDo(print()).andExpect(status().isOk());
 
     }
 
