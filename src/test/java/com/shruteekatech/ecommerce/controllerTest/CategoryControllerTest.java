@@ -36,7 +36,7 @@ public class CategoryControllerTest extends BaseTest {
     @Autowired
     private ModelMapper modelMapper;
 
-    Category  category,category1,category2;
+    Category  category;
 
     CategoryDto categoryDto,categoryDto1,categoryDto2;
     List<CategoryDto> categories;
@@ -48,14 +48,7 @@ public class CategoryControllerTest extends BaseTest {
                 .title("Electronics")
                 .description("All Electronics items")
                 .coverImage("xyz.png").build();
-        category1 = Category.builder()
-                .title("Mobiles")
-                .description("All Electronics items")
-                .coverImage("xyz.png").build();
-        category2 = Category.builder()
-                .title("Laptops")
-                .description("All Electronics items")
-                .coverImage("xyz.png").build();
+
 
         categoryDto = CategoryDto.builder()
                 .title("Cometics")
