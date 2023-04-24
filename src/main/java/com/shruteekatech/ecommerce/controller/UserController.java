@@ -2,6 +2,7 @@ package com.shruteekatech.ecommerce.controller;
 
 
 import com.shruteekatech.ecommerce.constant.AppConstant;
+import com.shruteekatech.ecommerce.constant.ValidationConstant;
 import com.shruteekatech.ecommerce.dtos.ImageResponse;
 import com.shruteekatech.ecommerce.dtos.PagableResponse;
 import com.shruteekatech.ecommerce.dtos.UserDto;
@@ -43,7 +44,6 @@ import java.util.List;
  */
 
 
-
 @RestController
 @RequestMapping("/Api/Users")
 @Slf4j
@@ -59,6 +59,7 @@ public class UserController {
     /**
      * This method save the user details .
      * {@code 201 CREATED}.
+     *
      * @return UserDto return all details of user from userDto class
      * @see //createuser method using  {@link @PostMapping}
      */
@@ -83,10 +84,11 @@ public class UserController {
      * @return UserDto return all details of user from userDto class
      */
     @GetMapping("/")
-    public ResponseEntity<PagableResponse> getAllUser(@RequestParam(value = "pagenumber", defaultValue = "0", required = false) Integer pagenumber,
-                                                      @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize
-                                                      , @RequestParam(value = "sortBy", defaultValue = "id", required = false) String sortBy,
-                                                      @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir) {
+    public ResponseEntity<PagableResponse> getAllUser(
+            @RequestParam(value = "pagenumber", defaultValue = ValidationConstant.PAGE_NUMBER, required = false) Integer pagenumber,
+            @RequestParam(value = "pagesize", defaultValue = ValidationConstant.PAGE_SIZE, required = false) Integer pagesize,
+            @RequestParam(value = "sortBy", defaultValue = ValidationConstant.SORT_BY_USER, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = ValidationConstant.SORT_DIR, required = false) String sortDir) {
         log.info("Initiated request to get all the user details");
         PagableResponse allUsers = this.userService.getAllUsers(pagenumber, pagesize, sortBy, sortDir);
         log.info("Completed request to get all the user details");
@@ -110,8 +112,8 @@ public class UserController {
     /**
      * This method Update the user details .
      *
-     * @param user      it takes the parameter from userDto
-     * @param userid    @pathvaribale takes the parameter as Integer userid
+     * @param user   it takes the parameter from userDto
+     * @param userid @pathvaribale takes the parameter as Integer userid
      * @return UserDto return all details of user from userDto class
      * @see //updateUser method using  {@link @PutMapping}
      */
@@ -127,8 +129,7 @@ public class UserController {
      * This method delele the user details by userid .
      * {@code 200 OK}
      *
-     *
-     * @param userid   @pathvaribale takes the parameter as userid
+     * @param userid @pathvaribale takes the parameter as userid
      * @return response as string ,User deleted Succesfully
      */
     @DeleteMapping("/delete/{userid}")
@@ -173,7 +174,7 @@ public class UserController {
 
     @PostMapping("/image/{userid}/")
     public ResponseEntity<ImageResponse> uploadImage(@PathVariable Long userid, @RequestParam("userimage") MultipartFile file) throws IOException {
-       log.info("Upload the image with userid:{}",userid);
+        log.info("Upload the image with userid:{}", userid);
         UserDto user = this.userService.getSingleUser(userid);
 
         String uploadImage = this.fileService.uploadImage(file, imageuploadpath);
@@ -181,25 +182,26 @@ public class UserController {
         user.setImageName(uploadImage);
         UserDto userDto = this.userService.updateUser(user, userid);
 
-        ImageResponse imageResponse=ImageResponse.builder().imagename(uploadImage).message("Image Uploaded").status(true).build();
-       log.info("Completed the upload image process",userid);
-        return new ResponseEntity<>(imageResponse,HttpStatus.CREATED);
+        ImageResponse imageResponse = ImageResponse.builder().imagename(uploadImage).message("Image Uploaded").status(true).build();
+        log.info("Completed the upload image process", userid);
+        return new ResponseEntity<>(imageResponse, HttpStatus.CREATED);
     }
-//    To serve the user image
+
+    //    To serve the user image
     @GetMapping("/image/{userId}")
-    public void  serveUserimage(@PathVariable Long userId, HttpServletResponse response) throws IOException {
-        log.info("initiated request to serve image with userid:{}",userId);
+    public void serveUserimage(@PathVariable Long userId, HttpServletResponse response) throws IOException {
+        log.info("initiated request to serve image with userid:{}", userId);
         UserDto user = this.userService.getSingleUser(userId);
         InputStream resource = this.fileService.getResource(imageuploadpath, user.getImageName());
         response.setContentType(MediaType.IMAGE_PNG_VALUE);
-        StreamUtils.copy(resource,response.getOutputStream());
-        log.info("Completed request to serve image with userid:{}",userId);
+        StreamUtils.copy(resource, response.getOutputStream());
+        log.info("Completed request to serve image with userid:{}", userId);
     }
 
     @GetMapping("/report/{format}")
     public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException, JRException, FileNotFoundException {
-        log.info("initiated request to genrate the reports  with Format:{}",format);
-        log.info("completed request to genrate the reports  with Format:{}",format);
+        log.info("initiated request to genrate the reports  with Format:{}", format);
+        log.info("completed request to genrate the reports  with Format:{}", format);
         return this.userService.exportrept(format);
     }
 }
