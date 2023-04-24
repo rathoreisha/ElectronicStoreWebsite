@@ -2,17 +2,24 @@ package com.shruteekatech.ecommerce.controller;
 
 
 import com.shruteekatech.ecommerce.constant.AppConstant;
-import com.shruteekatech.ecommerce.dtos.ApiResponse;
-import com.shruteekatech.ecommerce.dtos.PagableResponse;
-import com.shruteekatech.ecommerce.dtos.ProductDto;
+import com.shruteekatech.ecommerce.constant.ValidationConstant;
+import com.shruteekatech.ecommerce.dtos.*;
+import com.shruteekatech.ecommerce.service.FileService;
 import com.shruteekatech.ecommerce.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Slf4j
 @RestController
@@ -21,12 +28,26 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private FileService fileService;
+    @Value("${product.profile.image.path}")
+    private String imageuploadpath;
+
     @PostMapping("/")
     public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto productDto)
     {
         log.info("Intiating request to Create Product");
         ProductDto product = this.productService.createProduct(productDto);
         log.info("Completed request to create the Product");
+        return new ResponseEntity<>(product, HttpStatus.CREATED);
+
+    }
+    @PostMapping("/category/{catid}")
+    public ResponseEntity<ProductDto> createProductwithcategory(@PathVariable Long catid,@Valid @RequestBody ProductDto productDto)
+    {
+        log.info("Intiating request to Create Product with category id :{}",catid);
+        ProductDto product = this.productService.createProductwithCategory(catid,productDto);
+        log.info("Completed request to create the Product with category id :{}",catid);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
 
     }
@@ -63,10 +84,10 @@ public class ProductController {
     }
     @GetMapping()
     public ResponseEntity<PagableResponse<ProductDto>> getAllProducts(
-            @RequestParam(value = "pagenumber", defaultValue = "0", required = false) Integer pagenumber,
-            @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize
-            , @RequestParam(value = "sortBy", defaultValue = "pid", required = false) String sortBy,
-            @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir)
+            @RequestParam(value = "pagenumber", defaultValue = ValidationConstant.PAGE_NUMBER, required = false) Integer pagenumber,
+            @RequestParam(value = "pagesize", defaultValue = ValidationConstant.PAGE_SIZE, required = false) Integer pagesize,
+            @RequestParam(value = "sortBy", defaultValue = ValidationConstant.SORT_BY_PRODUCT, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue =ValidationConstant.SORT_DIR, required = false) String sortDir)
 
     {
         log.info("Intiating request to GetAll Products");
@@ -77,10 +98,10 @@ public class ProductController {
     @GetMapping ("/{title}")
     public ResponseEntity<PagableResponse<ProductDto>> searchbytitle(
             @PathVariable String title,
-            @RequestParam(value = "pagenumber", defaultValue = "0", required = false) Integer pagenumber,
-            @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize
-            , @RequestParam(value = "sortBy", defaultValue = "pid", required = false) String sortBy,
-            @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir)
+            @RequestParam(value = "pagenumber", defaultValue = ValidationConstant.PAGE_NUMBER, required = false) Integer pagenumber,
+            @RequestParam(value = "pagesize", defaultValue = ValidationConstant.PAGE_SIZE, required = false) Integer pagesize,
+            @RequestParam(value = "sortBy", defaultValue = ValidationConstant.SORT_BY_PRODUCT, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue =ValidationConstant.SORT_DIR, required = false) String sortDir)
 
     {
         log.info("Intiating request to GetAll Products by searching title:{}",title);
@@ -88,19 +109,45 @@ public class ProductController {
         log.info("Completed request to GetAll Products by searching title:{}",title);
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
-    @GetMapping("/true")
+    @GetMapping("/true/{live}")
     public ResponseEntity<PagableResponse<ProductDto>> searchBylive(
             @PathVariable Boolean live,
-            @RequestParam(value = "pagenumber", defaultValue = "0", required = false) Integer pagenumber,
-            @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize
-            , @RequestParam(value = "sortBy", defaultValue = "pid", required = false) String sortBy,
-            @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir)
+            @RequestParam(value = "pagenumber", defaultValue = ValidationConstant.PAGE_NUMBER, required = false) Integer pagenumber,
+            @RequestParam(value = "pagesize", defaultValue = ValidationConstant.PAGE_SIZE, required = false) Integer pagesize,
+            @RequestParam(value = "sortBy", defaultValue = ValidationConstant.SORT_BY_PRODUCT, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue =ValidationConstant.SORT_DIR, required = false) String sortDir)
 
     {
         log.info("Intiating request to GetAll Products by searching live:{}",live);
         PagableResponse<ProductDto> products = this.productService.searchByLive(live,pagesize, pagenumber, sortBy, sortDir);
         log.info("Intiating request to GetAll Products by searching live:{}",live);
         return new ResponseEntity<>(products,HttpStatus.OK);
+    }
+
+    @PostMapping("/image/{productid}/")
+    public ResponseEntity<ImageResponse> uploadImage(@PathVariable Long productid, @RequestParam("userimage") MultipartFile file) throws IOException {
+        log.info("Upload the image with productid:{}",productid);
+        ProductDto productDto = this.productService.getById(productid);
+
+        String uploadImage = this.fileService.uploadImage(file, imageuploadpath);
+
+        productDto.setImageName(uploadImage);
+         this.productService.updateProducts(productDto, productid);
+
+
+        ImageResponse imageResponse=ImageResponse.builder().imagename(uploadImage).message("Image Uploaded").status(true).build();
+        log.info("Completed the upload image process",productid);
+        return new ResponseEntity<>(imageResponse,HttpStatus.CREATED);
+    }
+    //    To serve the user image
+    @GetMapping("/images/{productid}")
+    public void  serveimage(@PathVariable Long productid, HttpServletResponse response) throws IOException {
+        log.info("initiated request to serve image with productid:{}",productid);
+        ProductDto productDto = this.productService.getById(productid);
+        InputStream resource = this.fileService.getResource(imageuploadpath, productDto.getImageName());
+        response.setContentType(MediaType.IMAGE_PNG_VALUE);
+        StreamUtils.copy(resource,response.getOutputStream());
+        log.info("Completed request to serve image with productid:{}",productid);
     }
 
 }
