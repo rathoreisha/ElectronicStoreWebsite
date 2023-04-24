@@ -6,6 +6,7 @@ import com.shruteekatech.ecommerce.dtos.PagableResponse;
 import com.shruteekatech.ecommerce.model.Category;
 import com.shruteekatech.ecommerce.repository.CategoryRepo;
 import com.shruteekatech.ecommerce.service.CategoryService;
+import net.sf.jasperreports.engine.JRException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,9 +18,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class CategoryServiceTest extends BaseTest {
 
@@ -131,5 +137,13 @@ public class CategoryServiceTest extends BaseTest {
 
         Assertions.assertEquals(3, categoryDtoList.size(), "Not present data!");
 
+    }
+    @Test
+    void testExportrept() throws FileNotFoundException, JRException {
+
+        when(categoryRepo.findAll()).thenReturn(categories);
+        assertEquals("report generated in path : F:\\Bikkadit\\ElectronicStore_Project",
+                categoryService.exportrept("Category.pdf"));
+        verify(categoryRepo).findAll();
     }
 }
