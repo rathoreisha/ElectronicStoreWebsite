@@ -8,6 +8,7 @@ import com.shruteekatech.ecommerce.exception.ResourcenotFoundException;
 import com.shruteekatech.ecommerce.model.User;
 import com.shruteekatech.ecommerce.repository.UserRepository;
 import com.shruteekatech.ecommerce.service.UserService;
+import net.sf.jasperreports.engine.JRException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,12 +22,15 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 public class UserServiceImplTest extends BaseTest {
@@ -163,6 +167,14 @@ public class UserServiceImplTest extends BaseTest {
         List<UserDto> userDtos = userService.searchUsers(keyword);
         Assertions.assertEquals(3,userDtos.size(),"Size not matched !!");
 
+    }
+    @Test
+    void ExportreptTest() throws FileNotFoundException, JRException {
+
+        when(repository.findAll()).thenReturn(users);
+        assertEquals("report generated in path : F:\\Bikkadit\\ElectronicStore_Project",
+                userService.exportrept("asc"));
+        verify(repository).findAll();
     }
 
 
