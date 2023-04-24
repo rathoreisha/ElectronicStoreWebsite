@@ -150,7 +150,7 @@ public class CategoryControllerTest extends BaseTest {
     @Test
     void serveCategoryimageTest() throws Exception {
         when(fileService.getResource(Mockito.<String>any(), Mockito.<String>any()))
-                .thenReturn(new ByteArrayInputStream("AXAXAXAX".getBytes("UTF-8")));
+                .thenReturn(new ByteArrayInputStream("Image Uploaded".getBytes("UTF-8")));
         when(categoryService.getSingleCategory(Mockito.<Long>any())).thenReturn(new CategoryDto());
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/Category/image/{catid}", 1L);
         MockMvcBuilders.standaloneSetup(categoryController)
@@ -158,7 +158,7 @@ public class CategoryControllerTest extends BaseTest {
                 .perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("image/png"))
-                .andExpect(MockMvcResultMatchers.content().string("AXAXAXAX"));
+                .andExpect(MockMvcResultMatchers.content().string("Image uploaded"));
     }
 
     @Test

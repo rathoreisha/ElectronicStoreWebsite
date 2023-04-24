@@ -194,7 +194,7 @@ public class ProductControllerTest extends BaseTest {
     @Test
     void serveCategoryimageTest() throws Exception {
         when(fileService.getResource(Mockito.<String>any(), Mockito.<String>any()))
-                .thenReturn(new ByteArrayInputStream("AXAXAXAX".getBytes("UTF-8")));
+                .thenReturn(new ByteArrayInputStream("Image uploaded".getBytes("UTF-8")));
         when(productService.getById(Mockito.<Long>any())).thenReturn(productDto);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/products/images/{productid}", 1L);
         MockMvcBuilders.standaloneSetup(productController)
@@ -202,7 +202,7 @@ public class ProductControllerTest extends BaseTest {
                 .perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("image/png"))
-                .andExpect(MockMvcResultMatchers.content().string("AXAXAXAX"));
+                .andExpect(MockMvcResultMatchers.content().string("Image uploaded"));
     }
 
     private String converobjectTojsonString(Product product) {
