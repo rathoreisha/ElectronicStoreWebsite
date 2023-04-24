@@ -2,6 +2,7 @@ package com.shruteekatech.ecommerce.dtos;
 
 
 import com.shruteekatech.ecommerce.constant.ValidationConstant;
+import com.shruteekatech.ecommerce.validation.ImageNameValid;
 import lombok.*;
 
 import javax.validation.constraints.*;
@@ -38,4 +39,10 @@ public class ProductDto extends BaseEntityDto {
 
     @NotEmpty
     private String brand;
+
+    @NotEmpty
+    @ImageNameValid
+    private String imageName;
+
+    private CategoryDto category;
 }
