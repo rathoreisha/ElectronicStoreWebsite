@@ -3,7 +3,9 @@ package com.shruteekatech.ecommerce.servicetest;
 import com.shruteekatech.ecommerce.BaseTest;
 import com.shruteekatech.ecommerce.dtos.PagableResponse;
 import com.shruteekatech.ecommerce.dtos.ProductDto;
+import com.shruteekatech.ecommerce.model.Category;
 import com.shruteekatech.ecommerce.model.Product;
+import com.shruteekatech.ecommerce.repository.CategoryRepo;
 import com.shruteekatech.ecommerce.repository.ProductRepo;
 import com.shruteekatech.ecommerce.service.ProductService;
 import org.junit.jupiter.api.Assertions;
@@ -26,6 +28,9 @@ import java.util.Optional;
 public class ProductImplTest extends BaseTest {
     @MockBean
     private ProductRepo productRepo;
+
+    @MockBean
+    private CategoryRepo categoryRepo;
     @Autowired
     private ProductService productService;
     @Autowired
@@ -38,6 +43,8 @@ public class ProductImplTest extends BaseTest {
     List<Product> products;
 
     ProductDto productDto;
+
+    Category category;
 
 
     @BeforeEach
@@ -62,6 +69,12 @@ public class ProductImplTest extends BaseTest {
                 .description("All cosmetics are available")
                 .quantity(10).discount("20%").build();
 
+        category=Category.builder()
+                .title("Cosmetics").
+                description("All Products").
+                coverImage("abc.png").build();
+//                products(products).build();
+
         productDto= ProductDto.builder()
             .brand("sugar")
             .title("Cometics")
@@ -85,6 +98,16 @@ public class ProductImplTest extends BaseTest {
         Assertions.assertNotNull(product);
         Assertions.assertEquals(product1.getBrand(),product.getBrand());
 
+
+    }
+    @Test
+    public void createProductwithCategoryTest()
+    {
+        Long catid=1l;
+        Mockito.when(categoryRepo.findById(Mockito.anyLong())).thenReturn(Optional.of(category));
+        Mockito.when(productRepo.save(Mockito.any())).thenReturn(product1);
+        ProductDto productwithCategory = productService.createProductwithCategory(catid, productDto);
+        Assertions.assertEquals(product1.getBrand(),productwithCategory.getBrand());
 
     }
     @Test
