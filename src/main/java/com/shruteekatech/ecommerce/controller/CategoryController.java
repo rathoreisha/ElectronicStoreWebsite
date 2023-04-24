@@ -2,6 +2,7 @@ package com.shruteekatech.ecommerce.controller;
 
 
 import com.shruteekatech.ecommerce.constant.AppConstant;
+import com.shruteekatech.ecommerce.constant.ValidationConstant;
 import com.shruteekatech.ecommerce.dtos.ApiResponse;
 import com.shruteekatech.ecommerce.dtos.CategoryDto;
 import com.shruteekatech.ecommerce.dtos.ImageResponse;
@@ -66,11 +67,11 @@ public class CategoryController {
         log.info("Completed the request to Get the Category :{}",catid);
         return new ResponseEntity<>(singleCategory,HttpStatus.OK);
     }
-    @GetMapping("/")
-    public ResponseEntity<PagableResponse> getAllcategories(@RequestParam(value = "pagenumber", defaultValue = "0", required = false) Integer pagenumber,
-                                                            @RequestParam(value = "pagesize", defaultValue = "10", required = false) Integer pagesize
-                                                          , @RequestParam(value = "sortBy", defaultValue = "categoryId", required = false) String sortBy,
-                                                            @RequestParam(value = "sortDir", defaultValue = "asc", required = false) String sortDir)
+    @GetMapping("/getall")
+    public ResponseEntity<PagableResponse> getAllcategories(@RequestParam(value = "pagenumber", defaultValue = ValidationConstant.PAGE_NUMBER, required = false) Integer pagenumber,
+                                                            @RequestParam(value = "pagesize", defaultValue = ValidationConstant.PAGE_SIZE, required = false) Integer pagesize
+                                                          , @RequestParam(value = "sortBy", defaultValue = ValidationConstant.SORT_BY_CAT, required = false) String sortBy,
+                                                            @RequestParam(value = "sortDir", defaultValue = ValidationConstant.SORT_DIR, required = false) String sortDir)
     {
         log.info("Initiated request to get all the Category details");
         PagableResponse<CategoryDto> allcategories = this.categoryService.getAllcategories(pagenumber, pagesize, sortBy, sortDir);
