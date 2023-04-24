@@ -14,4 +14,15 @@ public class ValidationConstant {
     public static final String CATEGORY = "Title should not be null or more than 5 characters";
 
     public static final String PRODUCT ="Title should not be null or more than 5 characters";
+    public static final String PAGE_SIZE ="5";
+
+    public static final  String PAGE_NUMBER="0";
+
+    public  static final String SORT_BY_CAT="categoryId";
+    public  static final String SORT_BY_USER="id";
+    public  static final String SORT_BY_PRODUCT="pid";
+    public static final String SORT_DIR="asc";
+
+
+
 }
