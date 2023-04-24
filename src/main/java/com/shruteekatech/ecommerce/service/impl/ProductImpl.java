@@ -6,7 +6,9 @@ import com.shruteekatech.ecommerce.dtos.PagableResponse;
 import com.shruteekatech.ecommerce.dtos.ProductDto;
 import com.shruteekatech.ecommerce.exception.ResourcenotFoundException;
 import com.shruteekatech.ecommerce.helper.Pageablemethod;
+import com.shruteekatech.ecommerce.model.Category;
 import com.shruteekatech.ecommerce.model.Product;
+import com.shruteekatech.ecommerce.repository.CategoryRepo;
 import com.shruteekatech.ecommerce.repository.ProductRepo;
 import com.shruteekatech.ecommerce.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,9 @@ public class ProductImpl implements ProductService {
     private ProductRepo productRepo;
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private CategoryRepo categoryRepo;
     /**
      * @param productDto
      * @return
@@ -37,6 +42,17 @@ public class ProductImpl implements ProductService {
         Product products = this.productRepo.save(product);
         log.info("Completed dao call to save the Product");
         return this.modelMapper.map(products,ProductDto.class);
+    }
+
+    @Override
+    public ProductDto createProductwithCategory(Long catid, ProductDto productDto) {
+        log.info("Intiating  dao call to save the Product with categoryid :{}",catid);
+        Category category = this.categoryRepo.findById(catid).orElseThrow(() -> new ResourcenotFoundException(AppConstant.CATEGORY, AppConstant.WITH_ID, catid));
+        Product productDto1 = this.modelMapper.map(productDto, Product.class);
+        productDto1.setCategory(category);
+        Product saveproduct = this.productRepo.save(productDto1);
+        log.info("Completed dao call to save the Product with categoryid :{}",catid);
+        return modelMapper.map(saveproduct,ProductDto.class);
     }
 
     /**
@@ -53,6 +69,7 @@ public class ProductImpl implements ProductService {
         product.setDescription(productDto.getDescription());
         product.setPrice(productDto.getPrice());
         product.setStock(productDto.getStock());
+        product.setImageName(productDto.getImageName());
         Product updatedproduct = this.productRepo.save(product);
         log.info("Completed dao call  For Updating Product with product id:{}",productid);
         return this.modelMapper.map(updatedproduct,ProductDto.class);

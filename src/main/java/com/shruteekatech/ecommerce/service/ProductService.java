@@ -9,6 +9,8 @@ public interface ProductService {
 //    create
 
     ProductDto createProduct(ProductDto productDto);
+//    create
+    ProductDto createProductwithCategory(Long catid,ProductDto productDto);
 //    Update
     ProductDto updateProducts(ProductDto productDto,Long productid);
 
