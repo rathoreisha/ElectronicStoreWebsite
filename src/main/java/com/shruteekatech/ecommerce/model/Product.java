@@ -27,6 +27,12 @@ public class Product extends BaseEntity {
 
     private String brand;
 
+    @Column(name="Product_image")
+    private String imageName;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="category_id")
+    private Category category;
+
 
 
 }
