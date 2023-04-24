@@ -3,6 +3,8 @@ package com.shruteekatech.ecommerce.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,5 +26,7 @@ public class Category extends BaseEntity{
     @Column(name="category_desc")
     private String description;
 
-    private String coverImage;
+     private String coverImage;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
+    private List<Product> products=new ArrayList<>();
 }
