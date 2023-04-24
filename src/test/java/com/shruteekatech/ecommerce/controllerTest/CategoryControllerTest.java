@@ -3,10 +3,14 @@ package com.shruteekatech.ecommerce.controllerTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shruteekatech.ecommerce.BaseTest;
+import com.shruteekatech.ecommerce.controller.CategoryController;
 import com.shruteekatech.ecommerce.dtos.CategoryDto;
 import com.shruteekatech.ecommerce.dtos.PagableResponse;
+import com.shruteekatech.ecommerce.dtos.ProductDto;
+import com.shruteekatech.ecommerce.dtos.UserDto;
 import com.shruteekatech.ecommerce.model.Category;
 import com.shruteekatech.ecommerce.service.CategoryService;
+import com.shruteekatech.ecommerce.service.FileService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,12 +20,17 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,7 +44,11 @@ public class CategoryControllerTest extends BaseTest {
 
     @Autowired
     private ModelMapper modelMapper;
+    @MockBean
+    private FileService fileService;
 
+    @Autowired
+    private CategoryController categoryController;
     Category  category;
 
     CategoryDto categoryDto,categoryDto1,categoryDto2;
@@ -50,7 +63,7 @@ public class CategoryControllerTest extends BaseTest {
                 .coverImage("xyz.png").build();
 
 
-        categoryDto = CategoryDto.builder()
+        categoryDto = CategoryDto.builder().categoryId(1l)
                 .title("Cometics")
                 .description("All cosmetics are avilable")
                 .coverImage("xyz.png")
@@ -101,7 +114,7 @@ public class CategoryControllerTest extends BaseTest {
         pagableResponse.setTotalPages(2);
 
         Mockito.when(categoryService.getAllcategories(Mockito.anyInt(),Mockito.anyInt(),Mockito.anyString(),Mockito.anyString())).thenReturn(pagableResponse);
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/Category/")
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/Category/getall")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
     }
@@ -132,6 +145,32 @@ public class CategoryControllerTest extends BaseTest {
         this.mockMvc.perform(MockMvcRequestBuilders.delete("/api/Category/"+1l)
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andDo(print()).andExpect(status().isOk());
+    }
+
+    @Test
+    void serveCategoryimageTest() throws Exception {
+        when(fileService.getResource(Mockito.<String>any(), Mockito.<String>any()))
+                .thenReturn(new ByteArrayInputStream("AXAXAXAX".getBytes("UTF-8")));
+        when(categoryService.getSingleCategory(Mockito.<Long>any())).thenReturn(new CategoryDto());
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/Category/image/{catid}", 1L);
+        MockMvcBuilders.standaloneSetup(categoryController)
+                .build()
+                .perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("image/png"))
+                .andExpect(MockMvcResultMatchers.content().string("AXAXAXAX"));
+    }
+
+    @Test
+    void testGenerateReport() throws Exception {
+        when(categoryService.exportrept(Mockito.<String>any())).thenReturn("Exportrept");
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/Category/report/{format}", "Format");
+        MockMvcBuilders.standaloneSetup(categoryController)
+                .build()
+                .perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType("text/plain;charset=ISO-8859-1"))
+                .andExpect(MockMvcResultMatchers.content().string("Exportrept"));
     }
 
     private String converobjectTojsonString(Category category) {
