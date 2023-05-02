@@ -42,7 +42,7 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.CREATED);
 
     }
-    @PostMapping("/category/{catid}")
+    @PostMapping("/{catid}")
     public ResponseEntity<ProductDto> createProductwithcategory(@PathVariable Long catid,@Valid @RequestBody ProductDto productDto)
     {
         log.info("Intiating request to Create Product with category id :{}",catid);
@@ -82,7 +82,7 @@ public class ProductController {
         log.info("Completed request to Delete Product with productid:{}",productId);
         return new ResponseEntity<>(productDto,HttpStatus.OK);
     }
-    @GetMapping()
+    @GetMapping("/allProducts")
     public ResponseEntity<PagableResponse<ProductDto>> getAllProducts(
             @RequestParam(value = "pagenumber", defaultValue = ValidationConstant.PAGE_NUMBER, required = false) Integer pagenumber,
             @RequestParam(value = "pagesize", defaultValue = ValidationConstant.PAGE_SIZE, required = false) Integer pagesize,

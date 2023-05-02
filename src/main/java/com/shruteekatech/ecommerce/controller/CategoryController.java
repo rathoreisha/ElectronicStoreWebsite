@@ -99,8 +99,8 @@ public class CategoryController {
         return new ResponseEntity<>(searchCategory,HttpStatus.OK);
     }
 
-    @PostMapping("/image/{categoryid}/")
-    public ResponseEntity<ImageResponse> uploadImage(@PathVariable Long categoryid, @RequestParam("userimage") MultipartFile file) throws IOException {
+    @PostMapping("/image/{categoryid}")
+    public ResponseEntity<ImageResponse> uploadImage(@PathVariable Long categoryid, @RequestParam("category") MultipartFile file) throws IOException {
         log.info("Initiating the request to Upload the image with categoryid:{}",categoryid);
         CategoryDto category = this.categoryService.getSingleCategory(categoryid);
 
