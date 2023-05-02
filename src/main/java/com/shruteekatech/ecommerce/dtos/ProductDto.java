@@ -9,7 +9,6 @@ import javax.validation.constraints.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Getter
 @Setter
 @Builder
